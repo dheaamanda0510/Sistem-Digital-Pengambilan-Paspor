@@ -199,6 +199,7 @@
                             <th class="px-8 py-5 text-[10px] font-black uppercase tracking-wider">Waktu</th>
                             <th class="px-8 py-5 text-[10px] font-black uppercase tracking-wider">Nama Lengkap</th>
                             <th class="px-8 py-5 text-[10px] font-black uppercase tracking-wider">No. Paspor</th>
+                            <th class="px-8 py-5 text-[10px] font-black uppercase tracking-wider">No. WhatsApp</th>
                             <th class="px-8 py-5 text-[10px] font-black uppercase tracking-wider">Lampiran Foto</th>
                             <th class="px-8 py-5 text-[10px] font-black uppercase tracking-wider text-center">Tindakan</th>
                         </tr>
@@ -455,6 +456,7 @@
                 </td>
                 <td class="px-8 py-6 font-black text-blue-900">${d.nama}</td>
                 <td class="px-8 py-6 font-mono font-bold text-gray-600">${d.no_paspor}</td>
+                <td class="px-8 py-6 font-bold text-gray-700">${d.whatsapp}</td>
                 <td class="px-8 py-6">
                     <div class="flex gap-2">
                         <button onclick="viewImage('${d.img_ktp}')" class="px-4 py-2 bg-blue-50 text-blue-700 rounded-xl text-[10px] font-black hover:bg-blue-100 uppercase transition-all">KTP</button>
@@ -505,7 +507,9 @@
             "Nama Lengkap": d.nama,
             "Nomor Paspor": d.no_paspor,
             "No WhatsApp": d.whatsapp,
-            "Lampiran Kuasa": d.img_kuasa ? 'Ada' : 'Tidak'
+            "Lampiran KTP": d.img_ktp ? 'Ada' : 'Tidak',
+            "Lampiran Kuasa / KK": d.img_kuasa ? 'Ada' : 'Tidak',
+            "Foto Bukti": d.img_bukti ? 'Ada' : 'Tidak'
         }));
         
         const ws = XLSX.utils.json_to_sheet(data);
@@ -516,7 +520,7 @@
 
     window.exportPDF = () => {
         const { jsPDF } = window.jspdf;
-        const doc = new jsPDF('l', 'mm', 'a4');
+        const doc = new jsPDF('l', 'mm', 'a4'); // 'l' for landscape
         const filter = document.getElementById('filter-month').value;
         
         doc.setFont("helvetica", "bold");
@@ -530,15 +534,44 @@
             d.createdAt ? new Date(d.createdAt.seconds*1000).toLocaleDateString('id-ID') : '',
             d.nama,
             d.no_paspor,
-            d.whatsapp
+            d.whatsapp,
+            '', // Placeholder for KTP Image
+            '', // Placeholder for Kuasa Image
+            ''  // Placeholder for Bukti Image
         ]);
         
         doc.autoTable({
             startY: 30,
-            head: [['No', 'Tanggal', 'Nama Pemilik', 'No Paspor', 'WhatsApp']],
+            head: [['No', 'Tanggal', 'Nama Pemilik', 'No Paspor', 'WhatsApp', 'Foto KTP', 'Foto Kuasa/KK', 'Foto Bukti']],
             body: body,
             theme: 'striped',
-            headStyles: { fillStyle: [30, 58, 138] }
+            headStyles: { fillStyle: [30, 58, 138] },
+            columnStyles: {
+                5: { cellWidth: 30, minCellHeight: 20 }, // KTP
+                6: { cellWidth: 30, minCellHeight: 20 }, // Kuasa
+                7: { cellWidth: 30, minCellHeight: 20 }  // Bukti
+            },
+            didDrawCell: function(data) {
+                if (data.section === 'body') {
+                    const rowData = filteredData[data.row.index];
+                    
+                    if (data.column.index === 5 && rowData.img_ktp) {
+                        try {
+                            doc.addImage(rowData.img_ktp, 'JPEG', data.cell.x + 2, data.cell.y + 2, 26, 16);
+                        } catch (e) { console.error("Error adding KTP image to PDF", e); }
+                    }
+                    if (data.column.index === 6 && rowData.img_kuasa) {
+                        try {
+                            doc.addImage(rowData.img_kuasa, 'JPEG', data.cell.x + 2, data.cell.y + 2, 26, 16);
+                        } catch (e) { console.error("Error adding Kuasa image to PDF", e); }
+                    }
+                    if (data.column.index === 7 && rowData.img_bukti) {
+                        try {
+                            doc.addImage(rowData.img_bukti, 'JPEG', data.cell.x + 2, data.cell.y + 2, 26, 16);
+                        } catch (e) { console.error("Error adding Bukti image to PDF", e); }
+                    }
+                }
+            }
         });
         
         doc.save(`Laporan_Paspor_${filter}.pdf`);
@@ -547,4 +580,4 @@
     init();
 </script>
 </body>
-</html>522544
+</html>
