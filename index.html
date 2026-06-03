@@ -62,49 +62,50 @@
         <form id="passportForm" class="space-y-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="space-y-2">
-                    <label class="block text-sm font-bold text-gray-700 ml-1">Nama Lengkap Pemilik</label>
-                    <input type="text" id="nama" required class="w-full p-4 rounded-2xl border border-gray-200 focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all placeholder-gray-300 bg-gray-50/50" placeholder="Contoh: BUDI SANTOSO">
+                    <label class="block text-sm font-bold text-gray-700 ml-1">Nama Pemilik Paspor</label>
+                    <input type="text" id="nama_pemilik" required class="w-full p-4 rounded-2xl border border-gray-200 focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all placeholder-gray-300 bg-gray-50/50" placeholder="Contoh: BUDI SANTOSO">
                 </div>
                 <div class="space-y-2">
-                    <label class="block text-sm font-bold text-gray-700 ml-1">Nomor Paspor</label>
+                    <label class="block text-sm font-bold text-gray-700 ml-1">No Paspor</label>
                     <input type="text" id="no_paspor" required class="w-full p-4 rounded-2xl border border-gray-200 focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all font-mono bg-gray-50/50 uppercase" placeholder="X1234567">
                 </div>
-            </div>
-
-            <div class="space-y-2">
-                <label class="block text-sm font-bold text-gray-700 ml-1 text-center md:text-left">Nomor WhatsApp Aktif</label>
-                <div class="relative max-w-md mx-auto md:mx-0">
-                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-blue-600 font-black border-r border-gray-300 pr-3">+62</span>
-                    <input type="tel" id="whatsapp" required class="w-full p-4 pl-20 rounded-2xl border border-gray-200 focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all bg-gray-50/50" placeholder="81234567890">
+                <div class="space-y-2">
+                    <label class="block text-sm font-bold text-gray-700 ml-1">Nama Penerima</label>
+                    <input type="text" id="nama_penerima" required class="w-full p-4 rounded-2xl border border-gray-200 focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all placeholder-gray-300 bg-gray-50/50" placeholder="Contoh: ANDI SURYA">
+                </div>
+                <div class="space-y-2">
+                    <label class="block text-sm font-bold text-gray-700 ml-1">Nomor WA Penerima</label>
+                    <div class="relative">
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-blue-600 font-black border-r border-gray-300 pr-3">+62</span>
+                        <input type="tel" id="wa_penerima" required class="w-full p-4 pl-20 rounded-2xl border border-gray-200 focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all bg-gray-50/50" placeholder="81234567890">
+                    </div>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white p-6 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-sm font-black text-gray-800"><i class="fas fa-id-card mr-2 text-blue-500"></i> FOTO KTP</span>
-                        <span class="text-[10px] bg-red-100 text-red-600 px-2 py-0.5 rounded-full font-bold">WAJIB</span>
-                    </div>
-                    <div class="flex flex-col gap-3">
-                        <button type="button" onclick="triggerCamera('ktp')" class="w-full bg-blue-50 text-blue-700 p-4 rounded-2xl flex items-center justify-center font-bold text-sm hover:bg-blue-100 transition-colors"><i class="fas fa-camera mr-2"></i> Ambil via Kamera</button>
-                        <input type="file" id="file-ktp" accept="image/*" class="hidden" onchange="handleFile(this, 'ktp')">
-                        <button type="button" onclick="document.getElementById('file-ktp').click()" class="w-full bg-gray-50 text-gray-600 p-3 rounded-2xl flex items-center justify-center font-semibold text-xs hover:bg-gray-100 transition-colors"><i class="fas fa-folder-open mr-2"></i> Dari Galeri</button>
-                    </div>
-                    <div id="preview-ktp" class="mt-4 flex justify-center"></div>
+            <div class="bg-white p-6 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-sm font-black text-gray-800"><i class="fas fa-id-card mr-2 text-blue-500"></i> FOTO KTP</span>
+                    <span class="text-[10px] bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full font-bold">Wajib Diisi</span>
                 </div>
+                <div class="flex flex-col gap-3 md:flex-row">
+                    <button type="button" onclick="triggerCamera('ktp')" class="flex-1 bg-blue-50 text-blue-700 p-4 rounded-2xl flex items-center justify-center font-bold text-sm hover:bg-blue-100 transition-colors"><i class="fas fa-camera mr-2"></i> Ambil via Kamera</button>
+                    <input type="file" id="file-ktp" accept="image/*" class="hidden" onchange="handleFile(this, 'ktp')">
+                    <button type="button" onclick="document.getElementById('file-ktp').click()" class="flex-1 bg-gray-50 text-gray-600 p-4 rounded-2xl flex items-center justify-center font-semibold text-sm hover:bg-gray-100 transition-colors"><i class="fas fa-folder-open mr-2"></i> Dari Galeri</button>
+                </div>
+                <div id="preview-ktp" class="mt-4 flex justify-center"></div>
+            </div>
 
-                <div class="bg-white p-6 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-sm font-black text-gray-800"><i class="fas fa-users mr-2 text-yellow-500"></i> SURAT KUASA / KK</span>
-                        <span class="text-[10px] bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full font-bold uppercase">Opsional</span>
-                    </div>
-                    <div class="flex flex-col gap-3">
-                        <button type="button" onclick="triggerCamera('kuasa')" class="w-full bg-yellow-50 text-yellow-700 p-4 rounded-2xl flex items-center justify-center font-bold text-sm hover:bg-yellow-100 transition-colors"><i class="fas fa-camera mr-2"></i> Ambil via Kamera</button>
-                        <input type="file" id="file-kuasa" accept="image/*" class="hidden" onchange="handleFile(this, 'kuasa')">
-                        <button type="button" onclick="document.getElementById('file-kuasa').click()" class="w-full bg-gray-50 text-gray-600 p-3 rounded-2xl flex items-center justify-center font-semibold text-xs hover:bg-gray-100 transition-colors"><i class="fas fa-folder-open mr-2"></i> Dari Galeri</button>
-                    </div>
-                    <div id="preview-kuasa" class="mt-4 flex justify-center"></div>
+            <div class="bg-white p-6 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-sm font-black text-gray-800"><i class="fas fa-file-contract mr-2 text-blue-500"></i> SURAT KUASA</span>
+                    <span class="text-[10px] bg-red-100 text-red-600 px-2 py-0.5 rounded-full font-bold">Jika Pengambilan Diwakilkan</span>
                 </div>
+                <div class="flex flex-col gap-3 md:flex-row">
+                    <button type="button" onclick="triggerCamera('kuasa')" class="flex-1 bg-blue-50 text-blue-700 p-4 rounded-2xl flex items-center justify-center font-bold text-sm hover:bg-blue-100 transition-colors"><i class="fas fa-camera mr-2"></i> Ambil via Kamera</button>
+                    <input type="file" id="file-kuasa" accept="image/*" class="hidden" onchange="handleFile(this, 'kuasa')">
+                    <button type="button" onclick="document.getElementById('file-kuasa').click()" class="flex-1 bg-gray-50 text-gray-600 p-4 rounded-2xl flex items-center justify-center font-semibold text-sm hover:bg-gray-100 transition-colors"><i class="fas fa-folder-open mr-2"></i> Dari Galeri</button>
+                </div>
+                <div id="preview-kuasa" class="mt-4 flex justify-center"></div>
             </div>
 
             <div class="bg-blue-900 p-8 rounded-[3rem] text-white shadow-xl shadow-blue-200">
@@ -197,9 +198,10 @@
                     <thead class="bg-gray-900 text-white">
                         <tr>
                             <th class="px-8 py-5 text-[10px] font-black uppercase tracking-wider">Waktu</th>
-                            <th class="px-8 py-5 text-[10px] font-black uppercase tracking-wider">Nama Lengkap</th>
+                            <th class="px-8 py-5 text-[10px] font-black uppercase tracking-wider">Nama Pemilik</th>
                             <th class="px-8 py-5 text-[10px] font-black uppercase tracking-wider">No. Paspor</th>
-                            <th class="px-8 py-5 text-[10px] font-black uppercase tracking-wider">No. WhatsApp</th>
+                            <th class="px-8 py-5 text-[10px] font-black uppercase tracking-wider">Nama Penerima</th>
+                            <th class="px-8 py-5 text-[10px] font-black uppercase tracking-wider">WA Penerima</th>
                             <th class="px-8 py-5 text-[10px] font-black uppercase tracking-wider">Lampiran Foto</th>
                             <th class="px-8 py-5 text-[10px] font-black uppercase tracking-wider text-center">Tindakan</th>
                         </tr>
@@ -383,8 +385,8 @@
 
     document.getElementById('passportForm').addEventListener('submit', async (e) => {
         e.preventDefault();
-        if (!formImages.bukti || !formImages.ktp) {
-            return showToast("FOTO KTP dan FOTO BUKTI wajib diisi!", "red");
+        if (!formImages.ktp || !formImages.bukti || !formImages.kuasa) {
+            return showToast("KTP, SURAT KUASA, dan FOTO BUKTI wajib diisi!", "red");
         }
         
         const btn = document.getElementById('submit-btn');
@@ -393,9 +395,10 @@
 
         try {
             const entryData = {
-                nama: document.getElementById('nama').value.toUpperCase(),
+                nama_pemilik: document.getElementById('nama_pemilik').value.toUpperCase(),
                 no_paspor: document.getElementById('no_paspor').value.toUpperCase(),
-                whatsapp: "62" + document.getElementById('whatsapp').value,
+                nama_penerima: document.getElementById('nama_penerima').value.toUpperCase(),
+                wa_penerima: "62" + document.getElementById('wa_penerima').value,
                 img_ktp: formImages.ktp,
                 img_kuasa: formImages.kuasa,
                 img_bukti: formImages.bukti,
@@ -444,7 +447,8 @@
         
         const filtered = allData.filter(d => {
             const matchMonth = filter === 'all' || d.month === filter;
-            const matchSearch = d.nama.toLowerCase().includes(search) || d.no_paspor.toLowerCase().includes(search);
+            const searchName = d.nama_pemilik || d.nama || '';
+            const matchSearch = searchName.toLowerCase().includes(search) || d.no_paspor.toLowerCase().includes(search);
             return matchMonth && matchSearch;
         });
         
@@ -454,14 +458,15 @@
                     <span class="block font-black text-gray-800">${d.createdAt ? new Date(d.createdAt.seconds*1000).toLocaleDateString('id-ID') : 'Memproses...'}</span>
                     <span class="text-[10px] text-gray-400 font-bold uppercase">${d.createdAt ? new Date(d.createdAt.seconds*1000).toLocaleTimeString('id-ID') : ''}</span>
                 </td>
-                <td class="px-8 py-6 font-black text-blue-900">${d.nama}</td>
+                <td class="px-8 py-6 font-black text-blue-900">${d.nama_pemilik || d.nama || '-'}</td>
                 <td class="px-8 py-6 font-mono font-bold text-gray-600">${d.no_paspor}</td>
-                <td class="px-8 py-6 font-bold text-gray-700">${d.whatsapp}</td>
+                <td class="px-8 py-6 font-bold text-blue-900">${d.nama_penerima || '-'}</td>
+                <td class="px-8 py-6 font-bold text-gray-700">${d.wa_penerima || d.whatsapp || '-'}</td>
                 <td class="px-8 py-6">
                     <div class="flex gap-2">
-                        <button onclick="viewImage('${d.img_ktp}')" class="px-4 py-2 bg-blue-50 text-blue-700 rounded-xl text-[10px] font-black hover:bg-blue-100 uppercase transition-all">KTP</button>
-                        ${d.img_kuasa ? `<button onclick="viewImage('${d.img_kuasa}')" class="px-4 py-2 bg-yellow-50 text-yellow-700 rounded-xl text-[10px] font-black hover:bg-yellow-100 uppercase transition-all">KK</button>` : ''}
-                        <button onclick="viewImage('${d.img_bukti}')" class="px-4 py-2 bg-purple-50 text-purple-700 rounded-xl text-[10px] font-black hover:bg-purple-100 uppercase transition-all">Bukti</button>
+                        ${d.img_ktp ? `<button onclick="viewImage('${d.img_ktp}')" class="px-4 py-2 bg-blue-50 text-blue-700 rounded-xl text-[10px] font-black hover:bg-blue-100 uppercase transition-all">KTP</button>` : ''}
+                        ${d.img_kuasa ? `<button onclick="viewImage('${d.img_kuasa}')" class="px-4 py-2 bg-yellow-50 text-yellow-700 rounded-xl text-[10px] font-black hover:bg-yellow-100 uppercase transition-all">Kuasa</button>` : ''}
+                        ${d.img_bukti ? `<button onclick="viewImage('${d.img_bukti}')" class="px-4 py-2 bg-purple-50 text-purple-700 rounded-xl text-[10px] font-black hover:bg-purple-100 uppercase transition-all">Bukti</button>` : ''}
                     </div>
                 </td>
                 <td class="px-8 py-6 text-center">
@@ -504,11 +509,12 @@
         
         const data = filteredData.map(d => ({
             "Tanggal Pengambilan": d.createdAt ? new Date(d.createdAt.seconds*1000).toLocaleString('id-ID') : '',
-            "Nama Lengkap": d.nama,
+            "Nama Pemilik": d.nama_pemilik || d.nama || '',
             "Nomor Paspor": d.no_paspor,
-            "No WhatsApp": d.whatsapp,
-            "Lampiran KTP": d.img_ktp ? 'Ada' : 'Tidak',
-            "Lampiran Kuasa / KK": d.img_kuasa ? 'Ada' : 'Tidak',
+            "Nama Penerima": d.nama_penerima || '',
+            "No WA Penerima": d.wa_penerima || d.whatsapp || '',
+            "Foto KTP": d.img_ktp ? 'Ada' : 'Tidak',
+            "Surat Kuasa": d.img_kuasa ? 'Ada' : 'Tidak',
             "Foto Bukti": d.img_bukti ? 'Ada' : 'Tidak'
         }));
         
@@ -532,9 +538,10 @@
         const body = filteredData.map((d, index) => [
             index + 1,
             d.createdAt ? new Date(d.createdAt.seconds*1000).toLocaleDateString('id-ID') : '',
-            d.nama,
+            d.nama_pemilik || d.nama || '',
             d.no_paspor,
-            d.whatsapp,
+            d.nama_penerima || '',
+            d.wa_penerima || d.whatsapp || '',
             '', // Placeholder for KTP Image
             '', // Placeholder for Kuasa Image
             ''  // Placeholder for Bukti Image
@@ -542,32 +549,32 @@
         
         doc.autoTable({
             startY: 30,
-            head: [['No', 'Tanggal', 'Nama Pemilik', 'No Paspor', 'WhatsApp', 'Foto KTP', 'Foto Kuasa/KK', 'Foto Bukti']],
+            head: [['No', 'Tanggal', 'Pemilik', 'Paspor', 'Penerima', 'WA', 'KTP', 'Kuasa', 'Bukti']],
             body: body,
             theme: 'striped',
             headStyles: { fillStyle: [30, 58, 138] },
             columnStyles: {
-                5: { cellWidth: 30, minCellHeight: 20 }, // KTP
-                6: { cellWidth: 30, minCellHeight: 20 }, // Kuasa
-                7: { cellWidth: 30, minCellHeight: 20 }  // Bukti
+                6: { cellWidth: 22, minCellHeight: 18 }, // KTP
+                7: { cellWidth: 22, minCellHeight: 18 }, // Kuasa
+                8: { cellWidth: 22, minCellHeight: 18 }  // Bukti
             },
             didDrawCell: function(data) {
                 if (data.section === 'body') {
                     const rowData = filteredData[data.row.index];
                     
-                    if (data.column.index === 5 && rowData.img_ktp) {
+                    if (data.column.index === 6 && rowData.img_ktp) {
                         try {
-                            doc.addImage(rowData.img_ktp, 'JPEG', data.cell.x + 2, data.cell.y + 2, 26, 16);
+                            doc.addImage(rowData.img_ktp, 'JPEG', data.cell.x + 2, data.cell.y + 2, 18, 14);
                         } catch (e) { console.error("Error adding KTP image to PDF", e); }
                     }
-                    if (data.column.index === 6 && rowData.img_kuasa) {
+                    if (data.column.index === 7 && rowData.img_kuasa) {
                         try {
-                            doc.addImage(rowData.img_kuasa, 'JPEG', data.cell.x + 2, data.cell.y + 2, 26, 16);
+                            doc.addImage(rowData.img_kuasa, 'JPEG', data.cell.x + 2, data.cell.y + 2, 18, 14);
                         } catch (e) { console.error("Error adding Kuasa image to PDF", e); }
                     }
-                    if (data.column.index === 7 && rowData.img_bukti) {
+                    if (data.column.index === 8 && rowData.img_bukti) {
                         try {
-                            doc.addImage(rowData.img_bukti, 'JPEG', data.cell.x + 2, data.cell.y + 2, 26, 16);
+                            doc.addImage(rowData.img_bukti, 'JPEG', data.cell.x + 2, data.cell.y + 2, 18, 14);
                         } catch (e) { console.error("Error adding Bukti image to PDF", e); }
                     }
                 }
