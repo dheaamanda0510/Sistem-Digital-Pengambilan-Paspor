@@ -385,8 +385,8 @@
 
     document.getElementById('passportForm').addEventListener('submit', async (e) => {
         e.preventDefault();
-        if (!formImages.ktp || !formImages.bukti || !formImages.kuasa) {
-            return showToast("KTP, SURAT KUASA, dan FOTO BUKTI wajib diisi!", "red");
+        if (!formImages.ktp || !formImages.bukti) {
+            return showToast("KTP dan FOTO BUKTI wajib diisi!", "red");
         }
         
         const btn = document.getElementById('submit-btn');
